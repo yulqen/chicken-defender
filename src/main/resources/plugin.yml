@@ -1,4 +1,4 @@
-name: Test
+name: ChickenDefender
 version: ${project.version}
 main: com.yulqen.test.Test
 api-version: 1.16

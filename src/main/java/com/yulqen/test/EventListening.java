@@ -42,8 +42,8 @@ public class EventListening implements Listener {
             damager.sendMessage(e.getEntity().getName() + " will be defended!");
             World world = damager.getWorld();
             Zombie zombie = world.spawn(new Location(world, loc.getX()+2.0, loc.getY(), loc.getZ()), Zombie.class);
-//            zombie.setBaby();
-//            zombie.setInvulnerable(true);
+            zombie.setBaby();
+            zombie.setInvulnerable(true);
             zombie.setCustomName("Chicken Defender");
             world.dropItemNaturally(loc, new ItemStack(Material.DIAMOND));
         }
@@ -56,15 +56,16 @@ public class EventListening implements Listener {
         World world = player.getWorld();
 //        Block block = world.getBlockAt(loc);
 //        block.setType(Material.STONE);
-        if (e.getItem().getItemStack().getType().equals(Material.OAK_LOG)) {
-            player.sendMessage("Clank! Be careful collecting oak logs.");
+        if (e.getItem().getItemStack().getType().equals(Material.SPRUCE_LOG)) {
+            player.sendMessage("Clank! Be careful collecting spruce logs.");
 //            world.createExplosion(new Location(world, loc.getX(), loc.getY(), loc.getZ()-5.0), 4f);
-            world.spawn(new Location(world, loc.getX() + 16, loc.getY(), loc.getZ()), Skeleton.class);
+            world.spawn(new Location(world, loc.getX() + 5, loc.getY(), loc.getZ()), Skeleton.class);
+            world.spawn(new Location(world, loc.getX() -5, loc.getY(), loc.getZ()), Skeleton.class);
         }
-        if (e.getItem().getItemStack().getType().equals(Material.DIRT)) {
-            player.sendMessage("Collecting dirt is a bad thing...");
-            world.spawn(new Location(world, loc.getX(), loc.getY(), loc.getZ() + 2.0), Wolf.class);
-        }
+//        if (e.getItem().getItemStack().getType().equals(Material.DIRT)) {
+//            player.sendMessage("Collecting dirt is a bad thing...");
+//            world.spawn(new Location(world, loc.getX(), loc.getY(), loc.getZ() + 2.0), Wolf.class);
+//        }
 //        e.getItem().getItemStack().setType(Material.ANVIL);
 //        double playerHealth = player.getHealth();
 //        player.setHealth(playerHealth / 1.2);
