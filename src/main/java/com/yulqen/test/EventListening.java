@@ -1,10 +1,8 @@
 package com.yulqen.test;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -57,17 +55,35 @@ public class EventListening implements Listener {
     @EventHandler
     public void chickenDefender(EntityDamageByEntityEvent e) {
         Entity damager = e.getDamager();
-        if (damager instanceof Player && e.getEntity().getType().equals(EntityType.CHICKEN)) {
-            Entity chicken = e.getEntity();
+        if (damager instanceof Player && (e.getEntity().getType().equals(EntityType.CHICKEN) ||
+                (e.getEntity().getType().equals(EntityType.COW)) ||
+                (e.getEntity().getType().equals(EntityType.PIG)))) {
+            Entity animal = e.getEntity();
             Location loc = damager.getLocation();
-            damager.sendMessage("You damaged " + e.getEntity().getName());
+            damager.sendMessage("You damaged " + animal.getName());
             damager.sendMessage(e.getEntity().getName() + " will be defended!");
             World world = damager.getWorld();
-            Zombie zombie = world.spawn(new Location(world, loc.getX()+2.0, loc.getY(), loc.getZ()), Zombie.class);
-            zombie.setBaby();
-            zombie.setInvulnerable(true);
-            zombie.setCustomName("Chicken Defender");
-            world.dropItemNaturally(loc, new ItemStack(Material.DIAMOND));
+            if (e.getEntity().getType().equals(EntityType.CHICKEN)) {
+                Zombie zombie = world.spawn(new Location(world, loc.getX()+2.0, loc.getY(), loc.getZ()), Zombie.class);
+                Zombie zombie2 = world.spawn(new Location(world, loc.getX()-8.0, loc.getY(), loc.getZ()), Zombie.class);
+                zombie.setBaby();
+                zombie.setInvulnerable(true);
+                zombie.setCustomName("Chicken Defender");
+                zombie2.setBaby();
+                zombie2.setInvulnerable(true);
+                zombie2.setCustomName("Chicken Defender");
+                world.dropItemNaturally(loc, new ItemStack(Material.DIAMOND));
+            } else if (e.getEntity().getType().equals(EntityType.COW)) {
+                Slime slime = world.spawn(new Location(world, loc.getX()+6, loc.getY(), loc.getZ()), Slime.class);
+                slime.setSize(4);
+                slime.setCustomName("Moo blob");
+                slime.attack(damager);
+            } else if (e.getEntity().getType().equals(EntityType.PIG)) {
+                Creeper creeper = world.spawn(new Location(world, loc.getX()-10, loc.getY(), loc.getZ()), Creeper.class);
+                Creeper creeper2 = world.spawn(new Location(world, loc.getX()+10, loc.getY(), loc.getZ()), Creeper.class);
+                creeper.setCustomName("Pig Protector");
+                creeper2.setCustomName("Pig Protector");
+            }
         }
     }
 
