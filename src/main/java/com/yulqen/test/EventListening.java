@@ -8,6 +8,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -30,6 +31,27 @@ public class EventListening implements Listener {
     public void joinMessage(PlayerJoinEvent event) {
         event.setJoinMessage("Welcome to the Server! Please behave and fun! (By the way, we have plugins and strange things might " +
                 "happen");
+    }
+
+    @EventHandler
+    public void sophieMinesIron(BlockBreakEvent e) {
+        Player player = e.getPlayer();
+        if (player.getName().equals("SophieLemLem")) {
+            if (e.getBlock().getType().equals(Material.IRON_ORE)) {
+                player.getInventory().addItem(new ItemStack(Material.IRON_INGOT, 8));
+                player.sendMessage("Sophie mines magic iron!");
+            }
+        }
+    }
+
+    @EventHandler
+    public void joeTiresWithCoalAndIron(BlockBreakEvent e) {
+        Player player = e.getPlayer();
+        if (player.getName().equals("_Joex")) {
+            if (e.getBlock().getType().equals(Material.IRON_ORE) || e.getBlock().getType().equals(Material.COAL_ORE)) {
+                player.setHealth(player.getHealth() / 1.2);
+            }
+        }
     }
 
     @EventHandler

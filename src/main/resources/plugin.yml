@@ -2,3 +2,12 @@ name: ChickenDefender
 version: ${project.version}
 main: com.yulqen.test.Test
 api-version: 1.16
+commands:
+  toss:
+    description: Give me 64 diamonds
+    useage: /diamonds
+    permission: chickendefender.enablediamonds
+  killzombies:
+    description: Kills all zombies
+    useage: /killzombies
+    permission: chickendefender.killzombies
