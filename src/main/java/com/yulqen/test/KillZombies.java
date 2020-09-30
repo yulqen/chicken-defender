@@ -1,6 +1,5 @@
 package com.yulqen.test;
 
-import com.sun.source.tree.Tree;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

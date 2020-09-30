@@ -1,10 +1,7 @@
 package com.yulqen.test;
 
 import org.bukkit.World;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.List;
 
 public final class Test extends JavaPlugin {
 
@@ -18,7 +15,7 @@ public final class Test extends JavaPlugin {
 //        }
         getServer().getWorld("mad_march_hare").setFullTime(1000);
         getServer().getPluginManager().registerEvents(new EventListening(), this);
-        this.getCommand("toss").setExecutor(new GiveMeDiamond());
+        this.getCommand("diamonds").setExecutor(new GiveMeDiamond());
         this.getCommand("killzombies").setExecutor(new KillZombies());
     }
 
