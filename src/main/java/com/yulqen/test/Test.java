@@ -7,7 +7,7 @@ public final class Test extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println("Test MC Plugin Loaded");
+        System.out.println("ChickenDefender Plugin Loaded");
         World world = getServer().getWorld("mad_march_hare");
 //        for (int i = 0; i < 20; i++) {
 //            System.out.println("Spawning " + EntityType.CHICKEN);

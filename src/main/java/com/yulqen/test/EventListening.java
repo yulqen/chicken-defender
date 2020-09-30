@@ -31,9 +31,7 @@ public class EventListening implements Listener {
 
     @EventHandler
     public void joinMessage(PlayerJoinEvent event) {
-        event.setJoinMessage("Welcome to the Server! Please behave and fun! (By the way, we have plugins and strange things might " +
-                "happen");
-        event.setJoinMessage("Please report bugs to the server.");
+        event.setJoinMessage("Do not pick up diamond armour from the ground. Boom.....!");
     }
 
     @EventHandler
@@ -130,35 +128,6 @@ public class EventListening implements Listener {
     }
 
     @EventHandler
-    public void harveySpawnsWithDiamondArmour(PlayerRespawnEvent e) {
-        Player player = e.getPlayer();
-        if (player.getName().equals("HarveyL")) {
-            ItemStack chestPlate = new ItemStack(Material.DIAMOND_CHESTPLATE);
-            ItemStack pants = new ItemStack(Material.DIAMOND_LEGGINGS);
-            ItemStack helmet = new ItemStack(Material.DIAMOND_HELMET);
-            ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
-
-            chestPlate.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
-            chestPlate.addEnchantment(Enchantment.DURABILITY, 3);
-            chestPlate.addEnchantment(Enchantment.BINDING_CURSE, 1);
-            pants.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
-            pants.addEnchantment(Enchantment.DURABILITY, 3);
-            pants.addEnchantment(Enchantment.BINDING_CURSE, 1);
-            helmet.addEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 4);
-            helmet.addEnchantment(Enchantment.DURABILITY, 3);
-            helmet.addEnchantment(Enchantment.BINDING_CURSE, 1);
-            boots.addEnchantment(Enchantment.DURABILITY, 3);
-            boots.addEnchantment(Enchantment.PROTECTION_FALL, 4);
-            boots.addEnchantment(Enchantment.BINDING_CURSE, 1);
-
-            player.getInventory().addItem(chestPlate);
-            player.getInventory().addItem(pants);
-            player.getInventory().addItem(helmet);
-            player.getInventory().addItem(boots);
-        }
-    }
-
-    @EventHandler
     public void sophieSpawnsWithDiamondArmour(PlayerRespawnEvent e) {
         Player player = e.getPlayer();
         if (player.getName().equals("SophieLemLem")) {
@@ -196,7 +165,7 @@ public class EventListening implements Listener {
     }
 
     @EventHandler
-    public void boomIfPickupOak(EntityPickupItemEvent e) {
+    public void skeletonIfPickUpLog(EntityPickupItemEvent e) {
         LivingEntity player = e.getEntity();
         Location loc = player.getLocation();
         World world = player.getWorld();
