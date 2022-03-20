@@ -31,7 +31,7 @@ public class EventListening implements Listener {
 
     @EventHandler
     public void joinMessage(PlayerJoinEvent event) {
-        event.setJoinMessage("Do not pick up diamond armour from the ground. Boom.....!");
+        event.setJoinMessage("YOU CAN NOW PICK UP YOUR DIAMOND ARMOUR. Remember - this game makes diamonds very easy to obtain ;-)");
     }
 
     @EventHandler
@@ -112,20 +112,20 @@ public class EventListening implements Listener {
         }
     }
 
-    @EventHandler
-    public void boomIfPickUpDiamondGear(EntityPickupItemEvent e) throws InterruptedException {
-        LivingEntity player = e.getEntity();
-        World world = player.getWorld();
-        Location loc = player.getLocation();
-        if ((e.getItem().getItemStack().getType().equals(Material.DIAMOND_BOOTS)) || e.getItem().getItemStack().getType().equals(Material.DIAMOND_CHESTPLATE)
-                || e.getItem().getItemStack().getType().equals(Material.DIAMOND_HELMET)
-                || e.getItem().getItemStack().getType().equals(Material.DIAMOND_LEGGINGS))
-    {
-        	player.sendMessage("Sorry! You that stuff isn't for you... Boom!");
-        	TimeUnit.SECONDS.sleep(2);
-        	world.createExplosion(loc, 4f);
-        }
-    }
+//    @EventHandler
+//    public void boomIfPickUpDiamondGear(EntityPickupItemEvent e) throws InterruptedException {
+//        LivingEntity player = e.getEntity();
+//        World world = player.getWorld();
+//        Location loc = player.getLocation();
+//        if ((e.getItem().getItemStack().getType().equals(Material.DIAMOND_BOOTS)) || e.getItem().getItemStack().getType().equals(Material.DIAMOND_CHESTPLATE)
+//                || e.getItem().getItemStack().getType().equals(Material.DIAMOND_HELMET)
+//                || e.getItem().getItemStack().getType().equals(Material.DIAMOND_LEGGINGS))
+//    {
+//        	player.sendMessage("Sorry! You that stuff isn't for you... Boom!");
+//        	TimeUnit.SECONDS.sleep(2);
+//        	world.createExplosion(loc, 4f);
+//        }
+//    }
 
     @EventHandler
     public void sophieSpawnsWithDiamondArmour(PlayerRespawnEvent e) {
